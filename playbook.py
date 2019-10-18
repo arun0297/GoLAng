@@ -6,6 +6,15 @@ import phantom.rules as phantom
 import json
 from datetime import datetime, timedelta
 
+def test_params(container, datapath, key_name):
+    params = []
+    items = set(phantom.collect(container, datapath, scope='all'))
+    for item in items:
+        params.append({key_name:item}) 
+    return params 
+
+# added a function to test the parameters
+
 def on_start(container):
     phantom.debug('on_start() called')
     
